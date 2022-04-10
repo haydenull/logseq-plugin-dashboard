@@ -1,0 +1,12 @@
+.container {
+  transition: all 0.25s ease-out;
+  background-color: rgba(0, 0, 0, 0.3);
+  @apply h-8 px-2 py-1 rounded-md cursor-pointer overflow-hidden;
+}
+.container:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.container:hover > div {
+  transition: transform 0.25s ease-out;
+  transform: scale(1.2);
+}

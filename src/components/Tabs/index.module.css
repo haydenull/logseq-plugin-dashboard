@@ -1,101 +1,37 @@
-:root {
-	--primary-color: #185ee0;
-	--secondary-color: #e6eef9;
+.header {
+	@apply flex items-center justify-between text-sm font-semibold;
 }
 
-*,
-*:after,
-*:before {
-	box-sizing: border-box;
-}
-
-.container {
-	position: absolute;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-  @apply bg-gray-500;
-}
 .tabs {
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.3);
 	/* box-shadow: 0 0 1px 0 rgba(#185ee0, 0.15), 0 6px 12px 0 rgba(#185ee0, 0.15); */
-  @apply rounded-lg relative flex;
+  @apply rounded-lg relative flex h-fit;
 }
-.tabs * {
-  z-index: 2;
-}
-
-input[type="radio"] {
-	display: none;
-}
-
 .tab {
-	height: 40px;
-	width: 140px;
+	height: 44px;
 	cursor: pointer;
-	transition: color 0.15s ease-in;
-  @apply text-gray-300 flex items-center justify-center;
+  @apply text-gray-300 flex items-center justify-center relative px-3 cursor-pointer;
 }
-
-.input:checked + label {
-  color: #fff;
+.tab.active {
+	color: #fff;
 }
-/* input[type="radio"] {
-	&:checked {
-		& + label {
-			color: var(--primary-color);
-			& > .notification {
-				background-color: var(--primary-color);
-				color: #fff;
-			}
-		}
-	}
-} */
-
-/* input[id="radio-1"] {
-	&:checked {
-		& ~ .glider {
-			transform: translateX(0);
-		}
-	}
-} */
-.input[id="radio-1"]:checked ~ .glider {
-  transform: translateX(0);
-}
-
-/* input[id="radio-2"] {
-	&:checked {
-		& ~ .glider {
-			transform: translateX(100%);
-		}
-	}
-} */
-.input[id="radio-2"]:checked ~ .glider {
-  transform: translateX(100%);
-}
-
-/* input[id="radio-3"] {
-	&:checked {
-		& ~ .glider {
-			transform: translateX(200%);
-		}
-	}
-} */
-.input[id="radio-3"]:checked ~ .glider {
-  transform: translateX(200%);
-}
-
 .glider {
-	position: absolute;
-	display: flex;
-	height: 40px;
-	width: 140px;
-	z-index: 1;
-	border-radius: 99px;
+	display: block;
 	transition: 0.25s ease-out;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.5);
+	@apply h-full rounded-lg absolute;
+}
+
+
+.tabPanelContainer {
+	@apply relative mt-2 overflow-auto;
+}
+.tabPanel {
+	transition: transform .5s, opacity .7s;
+	transform: translateY(20px);
+	@apply absolute invisible opacity-0 w-full py-3;
+}
+.tabPanel[active="true"] {
+	transform: scale(1);
+	@apply visible opacity-100;
 }

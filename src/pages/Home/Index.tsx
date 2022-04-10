@@ -1,11 +1,96 @@
-import { Button } from 'antd'
+import { IoSearchOutline, IoJournalOutline } from 'react-icons/io5'
 
-import backImg from '../../assets/back1.png'
+import backImg from '../../assets/back2.png'
 import avatarImg from '../../assets/avatar.jpg'
 import LogseqHead from '../../components/LogseqHead'
 import { LOGSEQ_HEAD_HEIGHT } from '../../util/constants'
 import s from './index.module.css'
 import Tabs from '../../components/Tabs/Index'
+import Button from '../../components/Button/Index'
+import TabPanel from '../../components/Tabs/TabPanel'
+import PageCard from './components/PageCard/Index'
+import type { IPageCardData } from './components/PageCard/Index'
+
+const groups = [
+  {
+    title: 'Favourites',
+    id: 'Favourites',
+    data: [
+      {
+        id: 'page-1',
+        title: 'Page 1',
+        category: 'page',
+        emoji: '📖',
+      },
+      {
+        id: 'page-2',
+        title: 'Page 2',
+        category: 'page',
+        emoji: '📖',
+      },
+      {
+        id: 'page-3',
+        title: 'Page 3',
+        category: 'page',
+        emoji: '📖',
+      },
+      {
+        id: 'page-4',
+        title: 'Page 4',
+        category: 'page',
+        emoji: '📖',
+      },
+      {
+        id: 'page-5',
+        title: 'Page 5',
+        category: 'page',
+        emoji: '📖',
+      },
+      {
+        id: 'page-6',
+        title: 'Page 6',
+        category: 'page',
+        emoji: '📖',
+      },
+      {
+        id: 'page-7',
+        title: 'Page 7',
+        category: 'page',
+        emoji: '📖',
+      },
+    ],
+  },
+  {
+    title: 'Bussiness',
+    id: 'Bussiness',
+    data: [
+      {
+        id: 'bussiness-1',
+        title: 'bussiness 1',
+        category: 'bussiness',
+        emoji: '📖',
+      },
+      {
+        id: 'bussiness-2',
+        title: 'bussiness 2',
+        category: 'bussiness',
+        emoji: '📖',
+      },
+      {
+        id: 'bussiness-3',
+        title: 'bussiness 3',
+        category: 'bussiness',
+        emoji: '📖',
+      },
+      {
+        id: 'bussiness-4',
+        title: 'bussiness 4',
+        category: 'bussiness',
+        emoji: '📖',
+      },
+    ],
+  },
+]
 
 const Home: React.FC<{ env?: string }> = ({ env }) => {
   return (
@@ -15,7 +100,7 @@ const Home: React.FC<{ env?: string }> = ({ env }) => {
     >
       <LogseqHead />
 
-      <div className="px-12 h-full">
+      <div className="flex flex-col h-full px-12 overflow-hidden justify-between">
         <div className="flex justify-between items-center mt-10">
           <h2 className="text-white m-0">Hi, Hayden</h2>
           <div>
@@ -24,9 +109,30 @@ const Home: React.FC<{ env?: string }> = ({ env }) => {
         </div>
 
         <div>
-          <div>
-            <Tabs />
-          </div>
+          <Tabs
+            defaultActiveKey={groups?.[0]?.id}
+            height={330}
+            suffix={
+              <div className="flex">
+                <Button icon={<IoJournalOutline />} title="Navigate To Journals Page" />
+                <Button className="ml-2" icon={<IoSearchOutline />} title="Search or Create" />
+              </div>
+            }
+          >
+            {
+              groups.map(group => (
+                <TabPanel key={group.id} tab={group.title}>
+                  <div className={s.groupContentContainer}>
+                    {
+                      group.data.map(card => (
+                        <PageCard id={card.id} title={card.title} category={card.category} emoji={card.emoji} />
+                      ))
+                    }
+                  </div>
+                </TabPanel>
+              ))
+            }
+          </Tabs>
         </div>
       </div>
 
