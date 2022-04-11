@@ -26,6 +26,11 @@
 .tabPanelContainer {
 	@apply relative mt-2 overflow-auto;
 }
+/* 隐藏滚动条 */
+.tabPanelContainer::-webkit-scrollbar {
+	display: none;
+}
+
 .tabPanel {
 	transition: transform .5s, opacity .7s;
 	transform: translateY(20px);

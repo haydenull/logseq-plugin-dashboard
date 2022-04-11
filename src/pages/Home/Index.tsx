@@ -1,4 +1,7 @@
+import { useState } from 'react'
 import { IoSearchOutline, IoJournalOutline } from 'react-icons/io5'
+// import { RiArrowUpSLine } from 'react-icons/ri'
+import { MdExpandLess, MdExpandMore } from 'react-icons/md'
 
 import backImg from '../../assets/back2.png'
 import avatarImg from '../../assets/avatar.jpg'
@@ -93,6 +96,8 @@ const groups = [
 ]
 
 const Home: React.FC<{ env?: string }> = ({ env }) => {
+  const [groupFold, setGroupFold] = useState(true)
+
   return (
     <div
       className={`${s.container} w-screen h-screen text-white`}
@@ -108,14 +113,15 @@ const Home: React.FC<{ env?: string }> = ({ env }) => {
           </div>
         </div>
 
-        <div>
+        <div className="relative">
           <Tabs
             defaultActiveKey={groups?.[0]?.id}
-            height={330}
+            height={'170px'}
             suffix={
               <div className="flex">
-                <Button icon={<IoJournalOutline />} title="Navigate To Journals Page" />
-                <Button className="ml-2" icon={<IoSearchOutline />} title="Search or Create" />
+                <Button icon={groupFold ? <MdExpandLess /> : <MdExpandMore />} onClick={() => setGroupFold(_fold => !_fold)} />
+                <Button icon={<IoJournalOutline />} className="ml-2" title="Navigate To Journals Page" />
+                <Button icon={<IoSearchOutline />} className="ml-2" title="Search or Create" />
               </div>
             }
           >

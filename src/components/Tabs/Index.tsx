@@ -4,7 +4,7 @@ import s from './index.module.css'
 
 const Tabs: React.FC<{
   defaultActiveKey?: string
-  height?: number
+  height?: string
   suffix?: React.ReactNode
 }> = ({ defaultActiveKey, height, suffix, children }) => {
   const [value, setValue] = useState(defaultActiveKey)
@@ -67,7 +67,7 @@ const Tabs: React.FC<{
         </div>
         { suffix }
       </div>
-      <div className={s.tabPanelContainer} style={{ height: height + 'px' }}>
+      <div className={s.tabPanelContainer} style={{ height }}>
         { renderTabPanel() }
       </div>
     </div>
