@@ -10,7 +10,7 @@ const App: React.FC<{
 }> = () => {
   return (
     <div>
-      <LogseqHead />
+      {/* <LogseqHead /> */}
       <Routes>
         <Route path="/" element={<Home />} />
         {/* <Route path="about" element={<About />} /> */}

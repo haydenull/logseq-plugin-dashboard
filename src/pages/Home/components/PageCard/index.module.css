@@ -12,7 +12,11 @@
   @apply bg-gray-200 flex justify-center items-center rounded-md;
 }
 .emoji span {
-  margin-top: -8px;
+  /* margin-top: -8px; */
+}
+.emoji img {
+  width: 80%;
+  height: 80%;
 }
 
 .container > div {

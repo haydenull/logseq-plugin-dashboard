@@ -103,7 +103,7 @@ const Home: React.FC<{ env?: string }> = ({ env }) => {
       className={`${s.container} w-screen h-screen text-white`}
       style={{ backgroundImage: `url(${backImg})`, paddingTop: LOGSEQ_HEAD_HEIGHT }}
     >
-      <LogseqHead />
+      {/* <LogseqHead /> */}
 
       <div className="flex flex-col h-full px-12 overflow-hidden justify-between">
         <div className="flex justify-between items-center mt-10">
