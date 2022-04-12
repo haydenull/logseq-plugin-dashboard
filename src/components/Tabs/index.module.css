@@ -24,6 +24,7 @@
 
 
 .tabPanelContainer {
+	transition: height 0.15s ease-out;
 	@apply relative mt-2 overflow-auto;
 }
 /* 隐藏滚动条 */

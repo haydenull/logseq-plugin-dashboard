@@ -4,7 +4,8 @@ import { LOGSEQ_HEAD_HEIGHT } from '../util/constants'
 
 const LogseqHead: React.FC<{}> = () => {
   return (
-    <div className="bg-transparent fixed top-0 w-screen" style={{ height: LOGSEQ_HEAD_HEIGHT }}></div>
+    // <div className="bg-transparent fixed top-0 w-screen" style={{ height: LOGSEQ_HEAD_HEIGHT }}></div>
+    <div className="bg-transparent w-screen pointer-events-none" style={{ height: LOGSEQ_HEAD_HEIGHT }}></div>
   )
 }
 

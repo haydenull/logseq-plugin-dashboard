@@ -116,7 +116,7 @@ const Home: React.FC<{ env?: string }> = ({ env }) => {
         <div className="relative">
           <Tabs
             defaultActiveKey={groups?.[0]?.id}
-            height={'170px'}
+            height={groupFold ? '170px' : '60vh'}
             suffix={
               <div className="flex">
                 <Button icon={groupFold ? <MdExpandLess /> : <MdExpandMore />} onClick={() => setGroupFold(_fold => !_fold)} />
