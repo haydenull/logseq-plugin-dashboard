@@ -3,7 +3,7 @@ import { Routes, Route, Link } from 'react-router-dom'
 
 import Home from './pages/Home/Index'
 import './App.css'
-import LogseqHead from './components/LogseqHead'
+import LogseqHead from './components/LogseqHead/Index'
 
 const App: React.FC<{
   env: string

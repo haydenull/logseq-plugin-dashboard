@@ -2,7 +2,7 @@
   height: 120px;
   min-width: 200px;
   font-size: 13px;
-  @apply bg-white text-gray-800 rounded-xl p-3 flex-col flex justify-between cursor-pointer;
+  @apply bg-white text-gray-800 rounded-xl p-3 flex-col flex justify-between cursor-pointer shadow hover:shadow-md;
 }
 
 .emoji {

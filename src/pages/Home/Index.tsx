@@ -5,7 +5,7 @@ import { MdExpandLess, MdExpandMore } from 'react-icons/md'
 
 import backImg from '../../assets/back2.png'
 import avatarImg from '../../assets/avatar.jpg'
-import LogseqHead from '../../components/LogseqHead'
+import LogseqHead from '../../components/LogseqHead/Index'
 import { LOGSEQ_HEAD_HEIGHT } from '../../util/constants'
 import s from './index.module.css'
 import Tabs from '../../components/Tabs/Index'
@@ -98,18 +98,25 @@ const groups = [
 const Home: React.FC<{ env?: string }> = ({ env }) => {
   const [groupFold, setGroupFold] = useState(true)
 
+  const onClickJournals = () => {
+    logseq.App.invokeExternalCommand('logseq.go/journals')
+  }
+  const onClickSearch = () => {
+    logseq.App.invokeExternalCommand('logseq.go/search')
+  }
+
   return (
     <div
       className={`${s.container} w-screen h-screen text-white`}
       style={{ backgroundImage: `url(${backImg})`, paddingTop: LOGSEQ_HEAD_HEIGHT }}
     >
-      {/* <LogseqHead /> */}
+      <LogseqHead />
 
       <div className="flex flex-col h-full px-12 overflow-hidden justify-between">
         <div className="flex justify-between items-center mt-10">
           <h2 className="text-white m-0">Hi, Hayden</h2>
           <div>
-            <img src={avatarImg} alt="avatar" className="w-10 h-10 rounded-full" />
+            <img src={avatarImg} alt="avatar" className="w-10 h-10 rounded-full shadow-lg" />
           </div>
         </div>
 
@@ -119,9 +126,9 @@ const Home: React.FC<{ env?: string }> = ({ env }) => {
             height={groupFold ? '170px' : '60vh'}
             suffix={
               <div className="flex">
-                <Button icon={groupFold ? <MdExpandLess /> : <MdExpandMore />} onClick={() => setGroupFold(_fold => !_fold)} />
-                <Button icon={<IoJournalOutline />} className="ml-2" title="Navigate To Journals Page" />
-                <Button icon={<IoSearchOutline />} className="ml-2" title="Search or Create" />
+                <Button icon={groupFold ? <MdExpandLess /> : <MdExpandMore />} onClick={() => setGroupFold(_fold => !_fold)} title={groupFold ? 'Expand' : 'Fold'} />
+                <Button icon={<IoJournalOutline />} onClick={onClickJournals} className="ml-2" title="Navigate To Journals Page" />
+                <Button icon={<IoSearchOutline />} onClick={onClickSearch} className="ml-2" title="Search or Create" />
               </div>
             }
           >
@@ -141,18 +148,6 @@ const Home: React.FC<{ env?: string }> = ({ env }) => {
           </Tabs>
         </div>
       </div>
-
-      {/* <button>test button pico</button> */}
-
-      {/* <Button onClick={() => {
-        logseq.App.invokeExternalCommand('logseq.go/search')
-      }}>Search</Button>
-      <Button onClick={() => {
-        logseq.App.invokeExternalCommand('logseq.command-palette/toggle')
-      }}>command palette</Button>
-      <Button onClick={() => {
-        logseq.App.invokeExternalCommand('logseq.go/journals')
-      }}>journals</Button> */}
     </div>
   )
 }
